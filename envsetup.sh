@@ -658,16 +658,16 @@ function lunch()
     fi
 
     if (echo -n $1 | grep -q -e "^yaap_") ; then
-      YAAP_BUILD=$(echo -n $product | sed -e 's/^yaap_//g')
+      MAXX_BUILD=$(echo -n $product | sed -e 's/^yaap_//g')
     else
-      YAAP_BUILD=
+      MAXX_BUILD=
     fi
-    export YAAP_BUILD
-    YAAP_DEVICE=$YAAP_BUILD
-    export YAAP_DEVICE
+    export MAXX_BUILD
+    MAXX_DEVICE=$MAXX_BUILD
+    export MAXX_DEVICE
 
     local depsOnly=""
-    if [[ $(find ./device -type d -name "$YAAP_DEVICE" -print -quit) != "" ]]; then
+    if [[ $(find ./device -type d -name "$MAXX_DEVICE" -print -quit) != "" ]]; then
         depsOnly="true"
     fi
 
@@ -677,6 +677,19 @@ function lunch()
 
     # Validate the selection and set all the environment stuff
     _lunch_meat $product $release $variant
+
+    printf '\n'
+    printf '%s\n' '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+    printf '%s\n' '              Welcome to MaxxOS'
+    printf '%s\n' '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+    printf '\n'
+    printf '%s\n' '     Build • Customize • Innovate • Repeat'
+    printf '\n'
+    printf '%s\n' '        Thanks for building with us.'
+    printf '%s\n' '                 🚀 MaxxOS'
+    printf '\n'
+    printf '%s\n' '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+    printf '\n'
 
     _lunch_store_leftovers $product $release $variant
 }
